@@ -1245,18 +1245,19 @@ body {
    SECTION 3: SKILLS & EXPERIENCE (TECH STACK)
    ========================================================================== */
 .skills-section {
-  padding: 120px var(--section-px);
+  padding: 120px 0;
   background: transparent;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  overflow: hidden;
 }
 
 .skills-container {
   width: 100%;
-  max-width: var(--container-max-width);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: 48px;
 }
 
 .skills-header-center {
@@ -1265,10 +1266,13 @@ body {
   align-items: center;
   text-align: center;
   gap: 14px;
+  padding: 0 var(--section-px);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
 }
 
 .skills-tag {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--color-green);
@@ -1277,7 +1281,7 @@ body {
 }
 
 .skills-title {
-  font-size: clamp(38px, 4.5vw, 56px);
+  font-size: clamp(36px, 4.2vw, 54px);
   font-weight: 800;
   line-height: 1.12;
   letter-spacing: -0.03em;
@@ -1285,53 +1289,118 @@ body {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Tech Stack 6-Column Grid */
-.tech-stack-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 48px 24px;
-  padding: 20px 0;
+/* ==========================================================================
+   ONE-LINE ROTATING SKILLS MARQUEE (INFINITE LOOP)
+   ========================================================================== */
+.skills-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 24px 0;
+  overflow: hidden;
+  user-select: none;
+  /* Smooth feathered fade on left and right edges */
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
-.tech-card {
+.skills-marquee-track {
   display: flex;
-  flex-direction: column;
+  width: max-content;
+  gap: 20px;
+  animation: rotateSkillsOneLine 38s linear infinite;
+  will-change: transform;
+}
+
+/* Pause animation on hover so the user can easily read and inspect */
+.skills-marquee-wrapper:hover .skills-marquee-track {
+  animation-play-state: paused;
+}
+
+.skills-marquee-group {
+  display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+/* Tech Card in One Line Rotating Marquee */
+.tech-card {
+  display: inline-flex;
+  align-items: center;
   gap: 14px;
+  padding: 10px 22px 10px 14px;
+  background: rgba(16, 20, 30, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   cursor: pointer;
-  transition: var(--transition-smooth);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.28s ease,
+              box-shadow 0.28s ease,
+              background 0.28s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: rgba(22, 28, 46, 0.94);
+  border-color: rgba(61, 126, 255, 0.7);
+  box-shadow: 0 10px 30px rgba(61, 126, 255, 0.35), inset 0 0 16px rgba(61, 126, 255, 0.12);
 }
 
 .tech-icon-wrap {
-  width: 68px;
-  height: 68px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border-radius: 16px;
-  transition: var(--transition-smooth);
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: transform 0.28s ease, background 0.28s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+.tech-icon-wrap svg {
+  width: 24px;
+  height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  display: block;
 }
 
 .tech-card:hover .tech-icon-wrap {
-  transform: translateY(-8px) scale(1.1);
-  filter: drop-shadow(0 8px 24px rgba(255, 255, 255, 0.2));
+  transform: rotate(6deg) scale(1.12);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
 }
 
 .tech-name {
   font-size: 15px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   letter-spacing: -0.01em;
-  text-align: center;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   transition: color 0.2s ease;
 }
 
 .tech-card:hover .tech-name {
-  color: var(--color-white);
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(61, 126, 255, 0.7);
+}
+
+/* Continuous Horizontal Rotation Keyframes */
+@keyframes rotateSkillsOneLine {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 10px));
+  }
 }
 
 /* ==========================================================================
