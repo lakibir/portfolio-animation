@@ -586,32 +586,32 @@ body {
 
 .showcase-card {
   position: relative;
-  border-radius: var(--radius-card);
+  border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background: transparent;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.4s ease,
-    background 0.4s ease;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+    border-color 0.35s ease,
+    background 0.35s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
 }
 
 .showcase-card:hover {
-  transform: translateY(-8px);
-  background: rgba(255, 80, 24, 0.04);
-  border-color: rgba(255, 80, 24, 0.5);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(255, 80, 24, 0.2);
+  transform: translateY(-6px);
+  background: rgba(255, 80, 24, 0.03);
+  border-color: rgba(255, 80, 24, 0.45);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 80, 24, 0.15);
 }
 
 .card-image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10.5;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: transparent;
 }
@@ -622,30 +622,30 @@ body {
   object-fit: cover;
   object-position: top;
   display: block;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .showcase-card:hover .card-img {
-  transform: scale(1.06);
+  transform: scale(1.04);
 }
 
 .card-img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(12, 14, 20, 0.65) 0%, rgba(12, 14, 20, 0.1) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(12, 14, 20, 0.5) 0%, transparent 60%);
   transition: opacity 0.3s ease;
 }
 
 .showcase-card:hover .card-img-overlay {
-  opacity: 0.75;
+  opacity: 0.6;
 }
 
-/* Floating Top Badges */
+/* Floating Minimal Badges */
 .showcase-card-badges {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  right: 14px;
+  top: 12px;
+  left: 12px;
+  right: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -661,8 +661,8 @@ body {
   text-transform: uppercase;
   color: var(--color-white);
   background: rgba(12, 14, 20, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 4px 10px;
   border-radius: var(--radius-pill);
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
@@ -677,22 +677,22 @@ body {
   color: #10B981;
   background: rgba(16, 185, 129, 0.18);
   border: 1px solid rgba(16, 185, 129, 0.4);
-  padding: 5px 10px;
+  padding: 4px 10px;
   border-radius: var(--radius-pill);
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
 
-/* Bottom Transparent Information Panel (No Blur) */
+/* Bottom Transparent Information Panel (Minimal & Crisp) */
 .showcase-info-panel {
-  padding: 24px 22px 20px;
+  padding: 20px 20px 18px;
   background: transparent;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   flex: 1;
   justify-content: space-between;
   transition: background 0.3s ease;
@@ -705,16 +705,17 @@ body {
 .showcase-header-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .showcase-project-title {
-  font-size: 19px;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 700;
   color: var(--color-white);
-  line-height: 1.25;
+  line-height: 1.3;
   letter-spacing: -0.015em;
   transition: color 0.25s ease;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .showcase-card:hover .showcase-project-title {
@@ -722,25 +723,34 @@ body {
 }
 
 .showcase-project-subtitle {
-  font-size: 12.5px;
+  font-size: 11.5px;
   font-weight: 600;
   color: var(--color-orange);
   line-height: 1.3;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .showcase-project-desc {
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .showcase-metric-pill {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   color: #e5a93b;
   background: rgba(229, 169, 59, 0.08);
-  border: 1px solid rgba(229, 169, 59, 0.25);
-  padding: 4px 10px;
+  border: 1px solid rgba(229, 169, 59, 0.22);
+  padding: 3px 9px;
   border-radius: var(--radius-pill);
   width: fit-content;
 }
@@ -754,23 +764,23 @@ body {
 .mini-tech-pill {
   font-size: 11px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 3px 8px;
-  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
 }
 
 .showcase-explore-btn {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 16px;
-  border-radius: 12px;
-  background: rgba(255, 80, 24, 0.1);
-  border: 1px solid rgba(255, 80, 24, 0.3);
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--color-white);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   text-decoration: none;
   transition: var(--transition-smooth);
@@ -778,44 +788,53 @@ body {
 }
 
 .showcase-explore-btn:hover {
-  background: var(--color-orange);
-  border-color: var(--color-orange);
-  box-shadow: 0 4px 18px rgba(255, 80, 24, 0.35);
+  background: rgba(255, 80, 24, 0.15);
+  border-color: rgba(255, 80, 24, 0.5);
+  box-shadow: 0 4px 16px rgba(255, 80, 24, 0.25);
   transform: translateY(-2px);
 }
 
-/* Scroll-Triggered Reveal Animations - Fully visible by default */
+/* ==========================================================================
+   SCROLL-TRIGGERED REVEAL ANIMATIONS (SMOOTH ENTRY)
+   ========================================================================== */
 .scroll-reveal {
-  opacity: 1;
-  transform: translateY(0);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.35s ease,
     box-shadow 0.35s ease;
+  will-change: opacity, transform;
 }
 
-/* Stagger delays for cards */
+.scroll-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger delays for showcase cards */
 .showcase-card:nth-child(1) {
-  transition-delay: 0.05s;
+  transition-delay: 0.06s;
 }
 
 .showcase-card:nth-child(2) {
-  transition-delay: 0.15s;
+  transition-delay: 0.18s;
 }
 
 .showcase-card:nth-child(3) {
-  transition-delay: 0.25s;
+  transition-delay: 0.3s;
 }
 
 .showcase-card:nth-child(4) {
-  transition-delay: 0.1s;
+  transition-delay: 0.15s;
 }
 
 .showcase-card:nth-child(5) {
-  transition-delay: 0.2s;
+  transition-delay: 0.28s;
 }
 
 .showcase-card:nth-child(6) {
-  transition-delay: 0.3s;
+  transition-delay: 0.4s;
 }
 
 .certificate-card:nth-child(1) {

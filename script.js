@@ -168,23 +168,26 @@
   requestAnimationFrame(animate);
 
   // Scroll Reveal for Project and Certification details
+  let scrollObserver = null;
   const initScrollReveal = () => {
-    const revealElements = document.querySelectorAll('.scroll-reveal');
+    const revealElements = document.querySelectorAll('.scroll-reveal:not(.in-view)');
     if (!revealElements.length) return;
 
     if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-          }
+      if (!scrollObserver) {
+        scrollObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              scrollObserver.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -40px 0px'
         });
-      }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -50px 0px'
-      });
-
-      revealElements.forEach(el => observer.observe(el));
+      }
+      revealElements.forEach(el => scrollObserver.observe(el));
     } else {
       // Fallback
       revealElements.forEach(el => el.classList.add('in-view'));
@@ -264,7 +267,7 @@
           // Take top 4 featured or ordered projects
           const featured = projects.slice(0, 4);
           grid.innerHTML = featured.map(p => `
-            <div class="showcase-card scroll-reveal in-view">
+            <div class="showcase-card scroll-reveal">
               <div class="card-image-wrapper">
                 <img src="${p.image || 'image/project-mern.jpg'}" alt="${escapeHtml(p.title)}" class="card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'">
                 <div class="card-img-overlay"></div>
@@ -290,6 +293,7 @@
               </div>
             </div>
           `).join('');
+          initScrollReveal();
         }
       }
     } catch (err) {
@@ -311,7 +315,7 @@
               .toUpperCase()
               .slice(0, 2);
             return `
-              <div class="testimonial-card scroll-reveal in-view">
+              <div class="testimonial-card scroll-reveal">
                 <div class="quote-icon">“</div>
                 <div class="testimonial-quote-wrap">
                   <p class="testimonial-quote">
@@ -331,6 +335,7 @@
               </div>
             `;
           }).join('');
+          initScrollReveal();
         }
       }
     } catch (err) {
