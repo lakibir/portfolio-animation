@@ -313,9 +313,14 @@
             return `
               <div class="testimonial-card scroll-reveal in-view">
                 <div class="quote-icon">“</div>
-                <p class="testimonial-quote">
-                  ${escapeHtml(t.quote)}
-                </p>
+                <div class="testimonial-quote-wrap">
+                  <p class="testimonial-quote">
+                    ${escapeHtml(t.quote)}
+                  </p>
+                  <button class="testimonial-more-btn" type="button" aria-expanded="false">
+                    <span class="more-text">Show more</span> <span class="more-icon">▾</span>
+                  </button>
+                </div>
                 <div class="testimonial-author-wrap">
                   <div class="author-avatar avatar-${(idx % 2) + 1}">${initials}</div>
                   <div class="author-meta">
@@ -350,3 +355,25 @@
   }
 })();
 
+
+  // Show More / Show Less for Recommendations / Testimonials
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.testimonial-more-btn');
+    if (!btn) return;
+    e.preventDefault();
+
+    const parent = btn.closest('.testimonial-quote-wrap') || btn.closest('.testimonial-card');
+    if (!parent) return;
+
+    const quote = parent.querySelector('.testimonial-quote');
+    if (!quote) return;
+
+    const isExpanded = quote.classList.toggle('is-expanded');
+    btn.classList.toggle('is-active', isExpanded);
+    btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+
+    const textSpan = btn.querySelector('.more-text');
+    if (textSpan) {
+      textSpan.textContent = isExpanded ? 'Show less' : 'Show more';
+    }
+  });
