@@ -1,20 +1,13 @@
 {
-  "name": "portfolio-web",
+  "name": "portfolio-workspace",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "Lekibir Mulatu Full-Stack Portfolio Application",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend run dev",
+    "seed": "npm --prefix backend run seed"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "cors": "^2.8.6",
-    "dotenv": "^18.0.4",
-    "express": "^5.2.1",
-    "mongoose": "^9.10.2"
-  }
+  "author": "Lekibir Mulatu",
+  "license": "ISC"
 }

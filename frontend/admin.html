@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Control Center — Folioblox</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="admin-ambient-glow admin-glow-1"></div>
+  <div class="admin-ambient-glow admin-glow-2"></div>
+
+  <!-- ADMIN AUTHENTICATION / LOGIN PORTAL SCREEN -->
+  <div class="admin-login-screen" id="adminLoginScreen">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-icon-badge">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+        <h1 class="login-title">Admin Control Center</h1>
+        <p class="login-subtitle">Lekibir Mulatu Portfolio Management System</p>
+      </div>
+
+      <div class="login-error-alert" id="loginErrorAlert">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span id="loginErrorMsg">Invalid credentials. Please verify your username and password.</span>
+      </div>
+
+      <form class="login-form" id="adminLoginForm">
+        <div class="login-form-group">
+          <label class="login-label" for="login-username">Username</label>
+          <div class="login-input-wrap">
+            <span class="login-input-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <input type="text" id="login-username" class="login-input" placeholder="e.g. lekibir" autocomplete="username" required>
+          </div>
+        </div>
+
+        <div class="login-form-group">
+          <label class="login-label" for="login-password">Password</label>
+          <div class="login-input-wrap">
+            <span class="login-input-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <input type="password" id="login-password" class="login-input" placeholder="Enter password" autocomplete="current-password" required>
+            <button type="button" class="login-toggle-eye" id="togglePasswordBtn" aria-label="Toggle password visibility">
+              <svg id="eyeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="login-btn-submit" id="loginSubmitBtn">
+          <span>Sign In to Control Center</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </form>
+
+      <div class="login-footer">
+        <a href="index.html" class="login-back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Return to Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-wrapper" id="adminDashboardWrapper" style="display:none;">
+
+    <!-- Admin Header -->
+    <header class="admin-header">
+      <div class="admin-brand">
+        <a href="index.html" class="admin-logo">Folioblox</a>
+        <span class="admin-badge">Admin System</span>
+        <span class="admin-status-pill" id="db-status-pill">
+          <span class="status-dot-pulse"></span>
+          <span id="db-status-text">Connecting to MongoDB...</span>
+        </span>
+      </div>
+
+      <div class="admin-top-actions">
+        <button class="btn-admin-pill" id="btn-reseed-db" title="Restore default portfolio items in MongoDB">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <polyline points="1 20 1 14 7 14"></polyline>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+          </svg>
+          <span>Reset / Seed DB</span>
+        </button>
+
+        <a href="index.html" class="btn-admin-pill" target="_blank">
+          <span>View Live Site</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+
+        <a href="projects.html" class="btn-admin-pill btn-primary-admin" target="_blank">
+          <span>Projects Page</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+
+        <button class="btn-admin-pill btn-logout-admin" id="btn-admin-logout" title="Log out from Admin Control Center">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Log Out</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Overview Stats KPI Row -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap">🚀</div>
+        <div class="kpi-num" id="stat-projects">0</div>
+        <div class="kpi-label">Active Projects</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap">📜</div>
+        <div class="kpi-num" id="stat-certs">0</div>
+        <div class="kpi-label">Certificates</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap">⚡</div>
+        <div class="kpi-num" id="stat-skills">0</div>
+        <div class="kpi-label">Skills &amp; Stacks</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap">💼</div>
+        <div class="kpi-num" id="stat-exp">0</div>
+        <div class="kpi-label">Work Milestones</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap">⭐</div>
+        <div class="kpi-num" id="stat-testimonials">0</div>
+        <div class="kpi-label">Testimonials</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon-wrap">📬</div>
+        <div class="kpi-num" id="stat-messages">0</div>
+        <div class="kpi-label">Inquiries Inbox</div>
+      </div>
+      <div class="kpi-card" onclick="switchTab('cv')" style="cursor: pointer;">
+        <div class="kpi-icon-wrap">📄</div>
+        <div class="kpi-num" id="stat-cv" style="font-size: 20px;">Ready</div>
+        <div class="kpi-label">Resume / CV</div>
+      </div>
+    </section>
+
+    <!-- Admin System Tabs Navigation -->
+    <div class="admin-tabs-row">
+      <div class="admin-tabs-list" role="tablist">
+        <button class="admin-tab-btn active" data-tab="projects">
+          <span>📁 Projects</span>
+          <span class="tab-badge" id="badge-projects">0</span>
+        </button>
+        <button class="admin-tab-btn" data-tab="certificates">
+          <span>📜 Certifications</span>
+          <span class="tab-badge" id="badge-certs">0</span>
+        </button>
+        <button class="admin-tab-btn" data-tab="skills">
+          <span>⚡ Skills</span>
+          <span class="tab-badge" id="badge-skills">0</span>
+        </button>
+        <button class="admin-tab-btn" data-tab="experience">
+          <span>💼 Experience</span>
+          <span class="tab-badge" id="badge-exp">0</span>
+        </button>
+        <button class="admin-tab-btn" data-tab="testimonials">
+          <span>⭐ Testimonials</span>
+          <span class="tab-badge" id="badge-testimonials">0</span>
+        </button>
+        <button class="admin-tab-btn" data-tab="messages">
+          <span>📬 Inquiries Inbox</span>
+          <span class="tab-badge" id="badge-messages">0</span>
+        </button>
+        <button class="admin-tab-btn" data-tab="cv">
+          <span>📄 Resume / CV</span>
+          <span class="tab-badge" id="badge-cv">Active</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 1: PROJECTS MANAGER
+         ========================================== -->
+    <section class="admin-section active" id="sec-projects">
+      <div class="section-top-bar">
+        <div class="section-heading-group">
+          <h2 class="section-title">Projects Showcase</h2>
+          <p class="section-subtitle">Alter, create, and manage web systems displayed across the portfolio.</p>
+        </div>
+        <button class="btn-admin-pill btn-primary-admin" onclick="openProjectModal()">
+          <span>+ Add New Project</span>
+        </button>
+      </div>
+
+      <div class="admin-card-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Preview</th>
+              <th>Project Title</th>
+              <th>Category</th>
+              <th>Tech Stack</th>
+              <th>GitHub &amp; Live</th>
+              <th>Features</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="projects-table-body">
+            <tr>
+              <td colspan="7" style="text-align: center; color: var(--color-text-dim);">Loading projects...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 2: CERTIFICATES MANAGER
+         ========================================== -->
+    <section class="admin-section" id="sec-certificates">
+      <div class="section-top-bar">
+        <div class="section-heading-group">
+          <h2 class="section-title">Certifications &amp; Credentials</h2>
+          <p class="section-subtitle">Alter and maintain verified industry technical credentials.</p>
+        </div>
+        <button class="btn-admin-pill btn-primary-admin" onclick="openCertificateModal()">
+          <span>+ Add New Certificate</span>
+        </button>
+      </div>
+
+      <div class="admin-card-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Credential Name</th>
+              <th>Issuing Organization</th>
+              <th>License ID</th>
+              <th>Year / Validity</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="certs-table-body">
+            <tr>
+              <td colspan="6" style="text-align: center; color: var(--color-text-dim);">Loading certificates...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 3: SKILLS MANAGER
+         ========================================== -->
+    <section class="admin-section" id="sec-skills">
+      <div class="section-top-bar">
+        <div class="section-heading-group">
+          <h2 class="section-title">Skills &amp; Tech Stack</h2>
+          <p class="section-subtitle">Manage technologies and proficiency indicators shown on the home page.</p>
+        </div>
+        <button class="btn-admin-pill btn-primary-admin" onclick="openSkillModal()">
+          <span>+ Add New Skill</span>
+        </button>
+      </div>
+
+      <div class="admin-card-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Skill / Technology</th>
+              <th>Category</th>
+              <th>Proficiency</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="skills-table-body">
+            <tr>
+              <td colspan="4" style="text-align: center; color: var(--color-text-dim);">Loading skills...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 4: EXPERIENCE MANAGER
+         ========================================== -->
+    <section class="admin-section" id="sec-experience">
+      <div class="section-top-bar">
+        <div class="section-heading-group">
+          <h2 class="section-title">Work Experience Milestones</h2>
+          <p class="section-subtitle">Alter professional career history and leadership responsibilities.</p>
+        </div>
+        <button class="btn-admin-pill btn-primary-admin" onclick="openExperienceModal()">
+          <span>+ Add Experience</span>
+        </button>
+      </div>
+
+      <div class="admin-card-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th style="width: 100px;">Rank</th>
+              <th>Role &amp; Organization</th>
+              <th>Post Label / Badge</th>
+              <th>Timeline &amp; Location</th>
+              <th>Status</th>
+              <th>Key Highlights</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="experience-table-body">
+            <tr>
+              <td colspan="7" style="text-align: center; color: var(--color-text-dim);">Loading experience...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 5: TESTIMONIALS MANAGER
+         ========================================== -->
+    <section class="admin-section" id="sec-testimonials">
+      <div class="section-top-bar">
+        <div class="section-heading-group">
+          <h2 class="section-title">Client Praise &amp; Testimonials</h2>
+          <p class="section-subtitle">Manage client feedback and social proof displayed on the landing page.</p>
+        </div>
+        <button class="btn-admin-pill btn-primary-admin" onclick="openTestimonialModal()">
+          <span>+ Add Testimonial</span>
+        </button>
+      </div>
+
+      <div class="admin-card-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Client Name</th>
+              <th>Role &amp; Company</th>
+              <th>Quote Feedback</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="testimonials-table-body">
+            <tr>
+              <td colspan="4" style="text-align: center; color: var(--color-text-dim);">Loading testimonials...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 6: MESSAGES INBOX
+         ========================================== -->
+    <section class="admin-section" id="sec-messages">
+      <div class="section-top-bar">
+        <div class="section-heading-group">
+          <h2 class="section-title">Contact Inquiries &amp; Messages</h2>
+          <p class="section-subtitle">Real-time incoming submissions captured from the contact form on your portfolio.
+          </p>
+        </div>
+      </div>
+
+      <div class="admin-card-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Sender</th>
+              <th>Email</th>
+              <th>Message Content</th>
+              <th>Date Received</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="messages-table-body">
+            <tr>
+              <td colspan="6" style="text-align: center; color: var(--color-text-dim);">Loading messages...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 7: RESUME / CV MANAGER
+         ========================================== -->
+    <section class="admin-section" id="sec-cv">
+      <div class="section-top-bar">
+        <div class="section-heading-group">
+          <h2 class="section-title">Resume &amp; Curriculum Vitae (CV) Manager</h2>
+          <p class="section-subtitle">Manage your official resume displayed on the home page, projects header, and
+            credentials.</p>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="#" id="btn-view-cv-ext" target="_blank" class="btn-admin-pill">
+            <span>👁️ Open Current CV</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+          <button class="btn-admin-pill" id="btn-reset-cv" type="button" title="Restore default portfolio resume file">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+            <span>Reset to Default</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="cv-dashboard-layout">
+        <!-- Card 1: Active CV Info -->
+        <div class="cv-info-card">
+          <div class="cv-card-header">
+            <h3 class="cv-card-title">
+              <span>📄</span>
+              <span>Active Resume Information</span>
+            </h3>
+            <span class="table-badge badge-success" id="cv-status-badge">Live • Verified</span>
+          </div>
+
+          <div class="cv-meta-grid">
+            <div class="cv-meta-item">
+              <div class="cv-meta-item-label">File Name</div>
+              <div class="cv-meta-item-value" id="cv-filename">lekibir-resume.jpg</div>
+            </div>
+            <div class="cv-meta-item">
+              <div class="cv-meta-item-label">File Size</div>
+              <div class="cv-meta-item-value" id="cv-filesize">216 KB</div>
+            </div>
+            <div class="cv-meta-item">
+              <div class="cv-meta-item-label">Format / MIME</div>
+              <div class="cv-meta-item-value" id="cv-filetype">image/jpeg</div>
+            </div>
+            <div class="cv-meta-item">
+              <div class="cv-meta-item-label">Last Updated</div>
+              <div class="cv-meta-item-value" id="cv-updated">Active</div>
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label">Public Access URL / Path</label>
+            <div style="display: flex; gap: 8px;">
+              <input type="text" class="admin-input" id="cv-fileurl-display" readonly
+                style="color: #ff7a59; font-family: monospace; font-size: 13px;">
+              <button class="btn-admin-pill" id="btn-copy-cv-link" type="button" title="Copy Link">📋 Copy</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Upload or Set Custom URL -->
+        <div class="cv-upload-card">
+          <div class="cv-card-header">
+            <h3 class="cv-card-title">
+              <span>📤</span>
+              <span>Upload New Resume File</span>
+            </h3>
+          </div>
+
+          <!-- File Upload Form -->
+          <form id="form-cv-upload">
+            <input type="file" id="cv-file-input" accept=".pdf,.jpg,.jpeg,.png,.webp,.docx" style="display: none;">
+            <div class="cv-drop-zone" id="cv-drop-zone" onclick="document.getElementById('cv-file-input').click()">
+              <div class="cv-drop-icon">📁</div>
+              <div class="cv-drop-text" id="cv-drop-label">Click or Drag &amp; Drop to Choose File</div>
+              <div class="cv-drop-hint">Supports PDF, JPG, PNG, WEBP (Max 15MB)</div>
+            </div>
+            <div style="margin-top: 14px; display: flex; gap: 10px;">
+              <button type="submit" class="btn-admin-pill btn-primary-admin" id="btn-upload-cv-submit"
+                style="flex: 1; justify-content: center;" disabled>
+                <span>Upload &amp; Apply to Portfolio</span>
+              </button>
+            </div>
+          </form>
+
+          <!-- Divider -->
+          <div
+            style="display: flex; align-items: center; gap: 10px; color: var(--color-text-dim); font-size: 12px; margin: 4px 0;">
+            <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.08);"></div>
+            <span>OR SET EXTERNAL LINK</span>
+            <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.08);"></div>
+          </div>
+
+          <!-- Custom Link Form -->
+          <form id="form-cv-url" style="display: flex; flex-direction: column; gap: 10px;">
+            <div class="admin-form-group">
+              <label class="admin-label">External CV Link (e.g. Google Drive, Dropbox, CDN)</label>
+              <input type="url" class="admin-input" id="cv-custom-url"
+                placeholder="https://drive.google.com/file/d/...">
+            </div>
+            <button type="submit" class="btn-admin-pill" style="justify-content: center;">
+              <span>Save Custom Link</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Live Preview Card -->
+      <div class="cv-preview-card">
+        <div class="cv-card-header">
+          <h3 class="cv-card-title">
+            <span>👁️</span>
+            <span>Live Interactive CV Document Preview</span>
+          </h3>
+          <span style="font-size: 12px; color: var(--color-text-dim);">Live rendering of the document visitors
+            see</span>
+        </div>
+        <div class="cv-preview-frame-wrap" id="cv-preview-frame-wrap" style="margin-top: 16px;">
+          <!-- Dynamically populated img or iframe -->
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ==========================================
+       MODAL: PROJECT FORM (ADD / EDIT)
+       ========================================== -->
+  <div class="admin-modal-overlay" id="modal-project">
+    <div class="admin-modal-box">
+      <div class="modal-header-row">
+        <h3 class="modal-title-text" id="project-modal-heading">Add New Project</h3>
+        <button class="btn-close-modal" onclick="closeModals()">✕</button>
+      </div>
+      <form class="admin-form" id="form-project">
+        <input type="hidden" id="p-id">
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Project Title *</label>
+            <input type="text" class="admin-input" id="p-title" required placeholder="e.g. Nexus Cloud Analytics">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Category *</label>
+            <input type="text" class="admin-input" id="p-category" required placeholder="e.g. Full-Stack / MERN">
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Subtitle / Subhead</label>
+          <input type="text" class="admin-input" id="p-subtitle" placeholder="e.g. Enterprise Cloud Cockpit">
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Description *</label>
+          <textarea class="admin-textarea" id="p-desc" rows="3" required
+            placeholder="Detailed system explanation..."></textarea>
+        </div>
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Image Path</label>
+            <input type="text" class="admin-input" id="p-image" placeholder="e.g. image/project-mern.jpg">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Metrics Highlight</label>
+            <input type="text" class="admin-input" id="p-metrics" placeholder="e.g. Sub-40ms P99 • 10k Sockets">
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Tech Stack (comma separated)</label>
+          <input type="text" class="admin-input" id="p-tech" placeholder="React, Node.js, MongoDB, Docker">
+        </div>
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">GitHub Repository URL</label>
+            <input type="url" class="admin-input" id="p-github" placeholder="https://github.com/username/project">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Live Demo URL</label>
+            <input type="text" class="admin-input" id="p-demo" placeholder="https://example.com or #contact">
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Professional Features (One per line)</label>
+          <textarea class="admin-textarea" id="p-features" rows="3"
+            placeholder="JWT Authentication &amp; Granular RBAC Permissions&#10;Real-Time Telemetry &amp; WebSocket Notifications&#10;Automated PDF Report &amp; Folio Reconciliation"></textarea>
+          <small style="color: var(--color-text-dim); font-size: 11px;">Each line creates a distinct professional
+            feature highlighted on project cards and details modals.</small>
+        </div>
+        <button type="submit" class="btn-admin-pill btn-primary-admin"
+          style="justify-content: center; margin-top: 10px;">
+          <span>Save Project</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: CERTIFICATE FORM (ADD / EDIT)
+       ========================================== -->
+  <div class="admin-modal-overlay" id="modal-certificate">
+    <div class="admin-modal-box">
+      <div class="modal-header-row">
+        <h3 class="modal-title-text" id="cert-modal-heading">Add New Certificate</h3>
+        <button class="btn-close-modal" onclick="closeModals()">✕</button>
+      </div>
+      <form class="admin-form" id="form-certificate">
+        <input type="hidden" id="c-id">
+        <div class="admin-form-group">
+          <label class="admin-label">Certificate Title *</label>
+          <input type="text" class="admin-input" id="c-title" required
+            placeholder="e.g. Full Stack Web Development Training">
+        </div>
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Issuer *</label>
+            <input type="text" class="admin-input" id="c-issuer" required
+              placeholder="e.g. Cursa Platform • WB Web Development">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">License / Credential ID</label>
+            <input type="text" class="admin-input" id="c-cred-id" placeholder="e.g. CURSA-u7987959">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Issue Year</label>
+            <input type="text" class="admin-input" id="c-year" placeholder="2024">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Valid Until <span
+                style="font-size:11px; opacity:0.75; font-weight:normal;">(Optional - leave blank for lifetime /
+                perpetual)</span></label>
+            <input type="text" class="admin-input" id="c-valid" placeholder="e.g. 2027 or Perpetual (Optional)">
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Skills / Competencies (comma separated)</label>
+          <input type="text" class="admin-input" id="c-skills" placeholder="Cloud Infrastructure, Serverless, IAM">
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Description / Scope</label>
+          <textarea class="admin-textarea" id="c-desc" rows="2" placeholder="Brief validation overview..."></textarea>
+        </div>
+        <button type="submit" class="btn-admin-pill btn-primary-admin"
+          style="justify-content: center; margin-top: 10px;">
+          <span>Save Certificate</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: SKILL FORM (ADD / EDIT)
+       ========================================== -->
+  <div class="admin-modal-overlay" id="modal-skill">
+    <div class="admin-modal-box">
+      <div class="modal-header-row">
+        <h3 class="modal-title-text" id="skill-modal-heading">Add New Skill</h3>
+        <button class="btn-close-modal" onclick="closeModals()">✕</button>
+      </div>
+      <form class="admin-form" id="form-skill">
+        <input type="hidden" id="s-id">
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Skill Name *</label>
+            <input type="text" class="admin-input" id="s-name" required placeholder="e.g. React or Node.js">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Category</label>
+            <input type="text" class="admin-input" id="s-category" placeholder="e.g. Frontend, Backend, Database">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Proficiency Percentage (%)</label>
+            <input type="number" class="admin-input" id="s-pct" min="1" max="100" value="90">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Brand Color (Hex)</label>
+            <input type="text" class="admin-input" id="s-color" placeholder="#ff5018">
+          </div>
+        </div>
+        <button type="submit" class="btn-admin-pill btn-primary-admin"
+          style="justify-content: center; margin-top: 10px;">
+          <span>Save Skill</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: EXPERIENCE FORM (ADD / EDIT)
+       ========================================== -->
+  <div class="admin-modal-overlay" id="modal-experience">
+    <div class="admin-modal-box">
+      <div class="modal-header-row">
+        <h3 class="modal-title-text" id="exp-modal-heading">Add Work Experience</h3>
+        <button class="btn-close-modal" onclick="closeModals()">✕</button>
+      </div>
+      <form class="admin-form" id="form-experience">
+        <input type="hidden" id="e-id">
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Role Title *</label>
+            <input type="text" class="admin-input" id="e-role" required placeholder="e.g. Full-Stack Developer Intern">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Company / Organization *</label>
+            <input type="text" class="admin-input" id="e-company" required
+              placeholder="e.g. Qiyas Advanced Digital Skills (AAU / MoLS)">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Start Date *</label>
+            <input type="text" class="admin-input" id="e-start-date" required placeholder="e.g. May 2026">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">End Date <span style="font-size:11px; opacity:0.75; font-weight:normal;">(or
+                Present)</span> *</label>
+            <input type="text" class="admin-input" id="e-end-date" required placeholder="e.g. Present or Dec 2026">
+          </div>
+        </div>
+        <input type="hidden" id="e-duration">
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Location</label>
+            <input type="text" class="admin-input" id="e-location" placeholder="e.g. Addis Ababa, Ethiopia">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Milestone Icon</label>
+            <input type="text" class="admin-input" id="e-icon" placeholder="🚀 or 🏛️ or 💻" maxlength="4">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Post / Role Rank Label (Attractive Timeline Badge)</label>
+            <input type="text" class="admin-input" id="e-badge"
+              placeholder="e.g. 🥇 Rank #1 • Active Lead or May 2026 – Present">
+            <div class="rank-badge-presets" style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;">
+              <button type="button" class="btn-rank-preset" onclick="setRankBadge('🥇 Rank #1 • Active Lead')">🥇 Rank
+                #1</button>
+              <button type="button" class="btn-rank-preset" onclick="setRankBadge('🥈 Rank #2 • Key Milestone')">🥈 Rank
+                #2</button>
+              <button type="button" class="btn-rank-preset" onclick="setRankBadge('🥉 Rank #3 • Systems Engine')">🥉
+                Rank #3</button>
+              <button type="button" class="btn-rank-preset" onclick="setRankBadge('⭐ Senior Lead Milestone')">⭐ Senior
+                Lead</button>
+              <button type="button" class="btn-rank-preset" onclick="setRankBadge('⚡ Full-Stack &amp; AI')">⚡ Full-Stack
+                &amp; AI</button>
+            </div>
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Rank Priority / Display Order (1 = Top Rank)</label>
+            <input type="number" class="admin-input" id="e-order" value="1" min="1" max="99">
+            <small style="color: var(--color-text-dim); font-size: 11px; margin-top: 4px; display: block;">Lower numbers
+              appear first with prestigious rank badge styling (#1 Gold, #2 Silver, etc.).</small>
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label
+            style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: #ffffff; font-size: 13px; user-select: none; padding: 6px 0;">
+            <input type="checkbox" id="e-current"
+              style="width: 18px; height: 18px; accent-color: #ff7a59; cursor: pointer;">
+            <span><strong>Currently Active Role / Live Milestone</strong> (highlights with pulsing status dot on home
+              timeline)</span>
+          </label>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Role Overview / Summary *</label>
+          <textarea class="admin-textarea" id="e-desc" rows="2" required
+            placeholder="Brief overview of the role and scope..."></textarea>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Key Responsibilities &amp; Highlights (One per line)</label>
+          <textarea class="admin-textarea" id="e-highlights" rows="3"
+            placeholder="Scalable Frontend Features &amp; Robust Backend Services&#10;Relational &amp; Non-Relational Query Tuning, Agile Sprints"></textarea>
+          <small style="color: var(--color-text-dim); font-size: 11px;">Each line creates a distinct impact step on your
+            interactive home page timeline.</small>
+        </div>
+        <button type="submit" class="btn-admin-pill btn-primary-admin"
+          style="justify-content: center; margin-top: 10px;">
+          <span>Save Experience</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: TESTIMONIAL FORM (ADD / EDIT)
+       ========================================== -->
+  <div class="admin-modal-overlay" id="modal-testimonial">
+    <div class="admin-modal-box">
+      <div class="modal-header-row">
+        <h3 class="modal-title-text" id="t-modal-heading">Add Testimonial</h3>
+        <button class="btn-close-modal" onclick="closeModals()">✕</button>
+      </div>
+      <form class="admin-form" id="form-testimonial">
+        <input type="hidden" id="t-id">
+        <div class="form-row-2">
+          <div class="admin-form-group">
+            <label class="admin-label">Client Name *</label>
+            <input type="text" class="admin-input" id="t-name" required placeholder="e.g. Isabella Rodriguez">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Role &amp; Title</label>
+            <input type="text" class="admin-input" id="t-role" placeholder="e.g. CEO and Co-founder">
+          </div>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Company</label>
+          <input type="text" class="admin-input" id="t-company" placeholder="e.g. ABC Company">
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-label">Testimonial Quote *</label>
+          <textarea class="admin-textarea" id="t-quote" rows="3" required
+            placeholder="Client feedback quote..."></textarea>
+        </div>
+        <button type="submit" class="btn-admin-pill btn-primary-admin"
+          style="justify-content: center; margin-top: 10px;">
+          <span>Save Testimonial</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Popup -->
+  <div class="admin-toast" id="admin-toast">
+    <span id="toast-msg">Operation successful!</span>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+
+</html>

@@ -57,38 +57,42 @@ An ultra-modern, interactive, and responsive portfolio web application crafted w
 
 ```text
 portfolio-web/
-├── .env.example            # Environment variables template
-├── .gitignore               # Ignored files (node_modules, .env, secrets)
-├── package.json             # NPM dependencies & scripts
-├── server.js                # Express application entry point & MongoDB connection
-├── reseedDB.js              # Database seed script for quick startup
-├── seedData.js              # Production-grade mock data for projects & certifications
+├── backend/                    # Node.js Express & MongoDB Backend
+│   ├── .env                    # Environment variables (DB URI, PORT)
+│   ├── .env.example            # Environment variables template
+│   ├── package.json            # Backend dependencies & scripts
+│   ├── server.js               # Express application entry point & MongoDB connection
+│   ├── seedData.js             # Verified portfolio data
+│   ├── reseedDB.js             # Database reset/seed script
+│   ├── models/                 # Mongoose Data Models
+│   │   ├── Project.js
+│   │   ├── Certificate.js
+│   │   ├── Skill.js
+│   │   ├── Experience.js
+│   │   ├── Testimonial.js
+│   │   └── Message.js
+│   └── routes/                 # Express REST API Endpoints
+│       ├── projectRoutes.js    # /api/projects
+│       ├── certificateRoutes.js# /api/certificates
+│       ├── skillRoutes.js      # /api/skills
+│       ├── experienceRoutes.js # /api/experience
+│       ├── testimonialRoutes.js# /api/testimonials
+│       ├── contactRoutes.js    # /api/contact
+│       └── statsRoutes.js      # /api/stats
 │
-├── index.html               # Main landing page & interactive timeline
-├── projects.html            # Dedicated projects & certifications showcase page
-├── admin.html               # Full Admin CMS management dashboard
+├── frontend/                   # Client-side Static Web Application
+│   ├── index.html              # Main landing page & interactive canvas timeline
+│   ├── style.css               # Signature glassmorphic design system
+│   ├── script.js               # Canvas scroll sequence & interactive client logic
+│   ├── projects.html           # Dedicated projects & certifications showcase page
+│   ├── projects.js             # Showcase filtering, search & modal controller
+│   ├── admin.html              # Full Admin CMS management dashboard
+│   ├── admin.css               # Admin CMS panel styling
+│   ├── admin.js                # Admin CRUD operations & state management
+│   └── image/                  # Media, frame sequences, and project screenshots
 │
-├── style.css                # Primary design system, components, and animations
-├── script.js                # Landing page interactions & dynamic fetch
-├── projects.js              # Showcase filtering, search, and modal controller
-├── admin.js                 # Admin CRUD panel operations & state management
-├── admin.css                # Admin CMS panel styling
-│
-├── models/                  # Mongoose Schemas
-│   ├── Project.js           # Project data model
-│   ├── Certificate.js       # Certification data model
-│   ├── Skill.js             # Skill data model
-│   ├── Testimonial.js       # Testimonial data model
-│   └── Contact.js           # Contact inquiry data model
-│
-├── routes/                  # Express REST API Endpoints
-│   ├── projectRoutes.js     # /api/projects
-│   ├── certificateRoutes.js # /api/certificates
-│   ├── skillRoutes.js       # /api/skills
-│   ├── testimonialRoutes.js # /api/testimonials
-│   └── contactRoutes.js     # /api/contact
-│
-└── image/                   # Visual assets and media
+├── package.json                # Root package.json with convenient proxy scripts
+└── README.md                   # Project documentation
 ```
 
 ---
@@ -112,19 +116,22 @@ cd portfolio-animation
 
 ### 2. Install Dependencies
 
+You can install dependencies inside `backend/`:
+
 ```bash
+cd backend
 npm install
 ```
 
 ### 3. Configure Environment Variables
 
-Create a `.env` file in the root directory by copying the example template:
+Create a `.env` file in the `backend/` directory:
 
 ```bash
-cp .env.example .env
+cp backend/.env.example backend/.env
 ```
 
-Open `.env` and configure your settings:
+Open `backend/.env` and configure your settings:
 
 ```env
 PORT=5000
@@ -136,19 +143,17 @@ MONGODB_URI=your_mongodb_connection_string
 Populate your MongoDB database with pre-configured project, skill, and certification entries:
 
 ```bash
-node reseedDB.js
+npm run seed
+# or: cd backend && node reseedDB.js
 ```
 
 ### 5. Launch the Server
 
-Run in production mode:
-```bash
-node server.js
-```
+Run directly from root or inside `backend/`:
 
-Or run with live reload (if nodemon is installed):
 ```bash
-npm run dev
+npm start
+# or: npm run dev
 ```
 
 Visit the application in your browser:

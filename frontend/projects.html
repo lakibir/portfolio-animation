@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects Showcase — Lekibir Mulatu</title>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="projects-page">
+
+  <!-- Ambient Low-Opacity Orange-Red Atmospheric Glow Orbs -->
+  <div class="ambient-glow-container" aria-hidden="true">
+    <div class="ambient-glow glow-top-right"></div>
+    <div class="ambient-glow glow-mid-left"></div>
+    <div class="ambient-glow glow-cert-right"></div>
+    <div class="ambient-glow glow-bottom-left"></div>
+    <div class="ambient-grid-overlay"></div>
+  </div>
+
+  <!-- Content Wrapper -->
+  <div class="content-wrapper">
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="mainNavbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo" aria-label="Lekibir Mulatu">
+          <img src="image/logo.png" alt="SEIT Software &amp; Systems Logo" class="nav-logo-img">
+        </a>
+
+        <nav class="nav-links">
+          <a href="index.html#about" class="nav-link">About</a>
+          <a href="index.html#skills" class="nav-link">Skills</a>
+          <a href="projects.html" class="nav-link active" id="nav-link-projects">Projects</a>
+          <a href="/cv" target="_blank" class="nav-link btn-cv-link" data-cv-link>Resume / CV</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="index.html#contact" class="btn-pill-nav desktop-nav-action">
+            <span>Get in touch</span>
+            <div class="btn-arrow-circle">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </a>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button class="hamburger-btn" id="hamburgerBtn" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNavDrawer">
+            <span class="hamburger-box">
+              <span class="hamburger-line line-1"></span>
+              <span class="hamburger-line line-2"></span>
+              <span class="hamburger-line line-3"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Backdrop & Drawer -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+      <div class="mobile-drawer-header">
+        <a href="index.html" class="mobile-drawer-brand">
+          <img src="image/logo.png" alt="SEIT Software &amp; Systems Logo" class="drawer-logo-img">
+          <div class="drawer-brand-text">
+            <span class="drawer-brand-name">Lekibir Mulatu</span>
+            <span class="drawer-brand-role">Software &amp; Systems Engineer</span>
+          </div>
+        </a>
+        <button class="mobile-drawer-close" id="mobileDrawerClose" type="button" aria-label="Close navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="mobile-drawer-body">
+        <div class="drawer-status-badge">
+          <span class="status-pulse-dot"></span>
+          <span>Available for Roles &amp; Projects</span>
+        </div>
+
+        <span class="drawer-section-label">NAVIGATION</span>
+
+        <nav class="mobile-drawer-links">
+          <a href="index.html#about" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </span>
+            <span class="mobile-nav-text">About Me</span>
+            <svg class="mobile-nav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+
+          <a href="index.html#skills" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </span>
+            <span class="mobile-nav-text">Skills &amp; Technologies</span>
+            <svg class="mobile-nav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+
+          <a href="projects.html" class="mobile-nav-link active">
+            <span class="mobile-nav-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </span>
+            <span class="mobile-nav-text">Projects Showcase</span>
+            <span class="mobile-nav-badge">Current</span>
+            <svg class="mobile-nav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+
+          <a href="index.html#certificates" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            </span>
+            <span class="mobile-nav-text">Certificates &amp; Credentials</span>
+            <svg class="mobile-nav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+
+          <a href="index.html#contact" class="mobile-nav-link">
+            <span class="mobile-nav-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </span>
+            <span class="mobile-nav-text">Contact &amp; Connect</span>
+            <svg class="mobile-nav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </nav>
+
+        <div class="mobile-drawer-actions">
+          <a href="/cv" target="_blank" class="mobile-btn-cv btn-cv-link" data-cv-link>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="12" y1="18" x2="12" y2="12"></line>
+              <polyline points="9 15 12 18 15 15"></polyline>
+            </svg>
+            <span>Download / View Resume (CV)</span>
+          </a>
+
+          <a href="index.html#contact" class="mobile-btn-cta">
+            <span>Get In Touch</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="mobile-drawer-footer">
+        <div class="mobile-drawer-socials">
+          <a href="https://github.com/lakibir" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="drawer-social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/lekibir-mulatu-355b94390" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="drawer-social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://x.com/lakeber93727" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="drawer-social-btn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/lekibir_21?stkn=MW9ncXJiMXYwdjRodQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="drawer-social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="mailto:lakbrmulatu@gmail.com" aria-label="Email" class="drawer-social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </a>
+          <a href="tel:+251964324525" aria-label="Phone" class="drawer-social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </a>
+        </div>
+        <p class="drawer-location-tag">📍 Addis Ababa, Ethiopia • Wollo Univ. (KiOT)</p>
+      </div>
+    </aside>
+
+    <!-- Hero Header Section -->
+    <section class="projects-hero-section">
+      <div class="projects-hero-container">
+
+        <a href="index.html" class="back-link-nav">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Landing Page</span>
+        </a>
+
+        <div class="projects-hero-header">
+          <div class="projects-badge-tag">
+            <span class="badge-dot">●</span>
+            <span>PORTFOLIO SHOWCASE</span>
+          </div>
+
+          <h1 class="projects-hero-title">
+            Architected for Scale.<br>
+            <span class="text-gradient-orange">Engineered for Impact.</span>
+          </h1>
+
+          <p class="projects-hero-desc">
+            A comprehensive showcase of verified software systems, enterprise applications, and full-stack engineering
+            projects by Lekibir Mulatu (B.Sc. Computer Science, Wollo University).
+          </p>
+        </div>
+
+        <!-- Quick Metrics Strip -->
+        <div class="projects-metrics-strip">
+          <div class="pmetric-item">
+            <span class="pmetric-num">6</span>
+            <span class="pmetric-label">Software &amp; Web<br>Systems</span>
+          </div>
+          <div class="pmetric-divider"></div>
+          <div class="pmetric-item">
+            <span class="pmetric-num">100%</span>
+            <span class="pmetric-label">Full-Stack &amp; API<br>Integrity</span>
+          </div>
+          <div class="pmetric-divider"></div>
+          <div class="pmetric-item">
+            <span class="pmetric-num">3.25</span>
+            <span class="pmetric-label">B.Sc. CGPA<br>Wollo University</span>
+          </div>
+          <div class="pmetric-divider"></div>
+          <div class="pmetric-item">
+            <span class="pmetric-num">Enterprise</span>
+            <span class="pmetric-label">Production Architecture<br>&amp; Code Quality</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 1: ALL PROJECTS SHOWCASE -->
+    <section class="projects-showcase-section" id="projects">
+      <div class="projects-showcase-container">
+
+        <!-- Live Search and Category Filter Toolbar -->
+        <div class="projects-toolbar">
+          <div class="toolbar-search-row">
+            <div class="search-box-wrap">
+              <svg class="search-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="project-search-input" class="search-input-field"
+                placeholder="Search projects by title, stack (e.g. Angular, ASP.NET, React, PostgreSQL), or domain...">
+            </div>
+
+            <div class="category-pills-wrap" id="category-filters">
+              <button class="filter-pill-btn active" data-category="all">All Works (6)</button>
+              <button class="filter-pill-btn" data-category="ecommerce">E-Commerce &amp; Logistics</button>
+              <button class="filter-pill-btn" data-category="ai">Computer Vision / AI</button>
+              <button class="filter-pill-btn" data-category="mern">Full-Stack / AgriTech</button>
+              <button class="filter-pill-btn" data-category="edtech">Full-Stack / EdTech</button>
+              <button class="filter-pill-btn" data-category="cms">Full-Stack / CMS</button>
+              <button class="filter-pill-btn" data-category="hospitality">Full-Stack / Hospitality</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 Full-Featured Project Cards Grid -->
+        <div class="projects-full-grid" id="projects-grid">
+          <!-- PROJECT 1: ELENI EPOXY -->
+          <article class="project-card-full" data-category="ecommerce"
+            data-title="eleni epoxy e-commerce logistics resin art angular aspnetcore postgresql docker"
+            data-tags="aspnetcore dotnet8 csharp angular angular17 typescript postgresql efcore tailwindcss docker jwt serilog fluentvalidation swagger" data-project-id="1">
+            <div class="project-thumb-box" onclick="openProjectModal(1)">
+              <img src="image/project-eleni.jpg" alt="Eleni Epoxy" class="project-thumb-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'">
+              <div class="project-thumb-overlay"></div>
+              <span class="thumb-tag-badge">Full-Stack / E-Commerce &amp; Logistics</span>
+              <span class="thumb-status-badge">
+                <span class="status-dot" style="background:#06b6d4; box-shadow: 0 0 8px #06b6d4;"></span> Production Live
+              </span>
+              <button class="thumb-quick-btn" aria-label="Quick View">
+                <span>Quick View</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-card-header">
+                <h3 class="project-card-title">Eleni Epoxy — Custom Resin Commerce &amp; Logistics Platform</h3>
+                <p class="project-card-desc">
+                  End-to-end e-commerce and logistics management platform tailored for custom resin and epoxy art commerce. Built with a decoupled client-server architecture bridging storefront retail, artisan inventory workflows, and last-mile order dispatch.
+                </p>
+              </div>
+
+              <div class="project-metrics-row">
+                <span class="card-metric-pill">Decoupled Architecture</span>
+                <span class="card-metric-pill">PostgreSQL 15+ &amp; JSONB</span>
+                <span class="card-metric-pill">4-Tier RBAC &amp; Docker</span>
+              </div>
+
+              <div class="project-features-chips" style="display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0;">
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.25); color: #22d3ee; display: inline-flex; align-items: center; gap: 4px;">⚡ Angular 17+ Signals</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.25); color: #22d3ee; display: inline-flex; align-items: center; gap: 4px;">🛡️ Claims-Based RBAC</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.25); color: #22d3ee; display: inline-flex; align-items: center; gap: 4px;">🐳 Docker Multi-Stage</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag-pill">ASP.NET Core 8</span>
+                <span class="tech-tag-pill">Angular 17+</span>
+                <span class="tech-tag-pill">PostgreSQL 15+</span>
+                <span class="tech-tag-pill">EF Core</span>
+                <span class="tech-tag-pill">Tailwind CSS</span>
+                <span class="tech-tag-pill">Docker</span>
+                <span class="tech-tag-pill">JWT Bearer</span>
+                <span class="tech-tag-pill">Serilog</span>
+              </div>
+
+              <div class="project-card-footer">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                  <a href="https://github.com/lakibir/eleni.git" target="_blank" rel="noopener noreferrer" class="btn-card-primary" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.4); color: #38bdf8;">
+                    <span>Source Code</span>
+                    <span style="font-size: 14px;">↗</span>
+                  </a>
+                  <a href="https://github.com/lakibir/eleni.git" target="_blank" rel="noopener noreferrer"
+                    class="btn-card-secondary" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                    </svg>
+                    <span>GitHub Repo</span>
+                  </a>
+                </div>
+                <button class="btn-card-details" onclick="openProjectModal(1)">View Architecture</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 2: FARMER TO MARKET -->
+          <article class="project-card-full" data-category="mern"
+            data-title="farmer to market agricultural marketplace digital produce direct buyer"
+            data-tags="angular typescript aspnetcore dotnet10 entityframework sqlserver restapi jwt" data-project-id="2">
+            <div class="project-thumb-box" onclick="openProjectModal(2)">
+              <img src="image/project-farmer.jpg" alt="Farmer to Market" class="project-thumb-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'">
+              <div class="project-thumb-overlay"></div>
+              <span class="thumb-tag-badge">Full-Stack / AgriTech</span>
+              <span class="thumb-status-badge">
+                <span class="status-dot" style="background:#10b981; box-shadow: 0 0 8px #10b981;"></span> Production Live
+              </span>
+              <button class="thumb-quick-btn" aria-label="Quick View">
+                <span>Quick View</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-card-header">
+                <h3 class="project-card-title">Farmer to Market — Digital Agricultural Marketplace</h3>
+                <p class="project-card-desc">
+                  Digital agricultural marketplace connecting farmers directly with buyers to discover, sell, and purchase fresh produce online—reducing intermediaries, enhancing transparency, and streamlining agricultural commerce.
+                </p>
+              </div>
+
+              <div class="project-metrics-row">
+                <span class="card-metric-pill">Direct Farmer-to-Buyer</span>
+                <span class="card-metric-pill">Zero Middlemen</span>
+                <span class="card-metric-pill">Angular &amp; ASP.NET Core</span>
+              </div>
+
+              <div class="project-features-chips" style="display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0;">
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">🌾 Product Listings</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">🛒 Online Marketplace</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">📦 Order Management</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag-pill">Angular</span>
+                <span class="tech-tag-pill">TypeScript</span>
+                <span class="tech-tag-pill">ASP.NET Core</span>
+                <span class="tech-tag-pill">.NET 10</span>
+                <span class="tech-tag-pill">Entity Framework Core</span>
+                <span class="tech-tag-pill">SQL Server</span>
+                <span class="tech-tag-pill">REST API</span>
+                <span class="tech-tag-pill">JWT</span>
+              </div>
+
+              <div class="project-card-footer">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                  <a href="https://farmer-to-market-k34t.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="btn-card-primary" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); color: #34d399;">
+                    <span>Live Demo</span>
+                    <span style="font-size: 14px;">↗</span>
+                  </a>
+                  <a href="https://github.com/lakibir/Farmer-to-Market.git" target="_blank" rel="noopener noreferrer"
+                    class="btn-card-secondary" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                    </svg>
+                    <span>GitHub Repo</span>
+                  </a>
+                </div>
+                <button class="btn-card-details" onclick="openProjectModal(2)">View Architecture</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 3: ETHIOTEMHRET LMS -->
+          <article class="project-card-full" data-category="edtech"
+            data-title="ethiotemhret lms educational management learning platform laravel php mysql"
+            data-tags="laravel php mysql blade javascript html5 css3 bootstrap composer npm git edtech" data-project-id="3">
+            <div class="project-thumb-box" onclick="openProjectModal(3)">
+              <img src="image/project-lms.jpg" alt="EthioTemhret LMS" class="project-thumb-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80'">
+              <div class="project-thumb-overlay"></div>
+              <span class="thumb-tag-badge">Full-Stack / EdTech</span>
+              <span class="thumb-status-badge">
+                <span class="status-dot" style="background:#10b981; box-shadow: 0 0 8px #10b981;"></span> Production Ready
+              </span>
+              <button class="thumb-quick-btn" aria-label="Quick View">
+                <span>Quick View</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-card-header">
+                <h3 class="project-card-title">EthioTemhret LMS — Educational Management &amp; Learning Platform</h3>
+                <p class="project-card-desc">
+                  Comprehensive web-based education management platform designed to centralize academic, student, teacher, parent, and administrative operations with structured role-based access.
+                </p>
+              </div>
+
+              <div class="project-metrics-row">
+                <span class="card-metric-pill">Modular Architecture</span>
+                <span class="card-metric-pill">Role-Based Management</span>
+                <span class="card-metric-pill">Centralized Data</span>
+              </div>
+
+              <div class="project-features-chips" style="display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0;">
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">🎓 Academic Operations</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">👥 Role-Based RBAC</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">⚡ Laravel &amp; MySQL</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag-pill">Laravel</span>
+                <span class="tech-tag-pill">PHP</span>
+                <span class="tech-tag-pill">MySQL</span>
+                <span class="tech-tag-pill">Blade</span>
+                <span class="tech-tag-pill">JavaScript</span>
+                <span class="tech-tag-pill">Bootstrap</span>
+                <span class="tech-tag-pill">Composer</span>
+                <span class="tech-tag-pill">Git</span>
+              </div>
+
+              <div class="project-card-footer">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                  <a href="#contact" class="btn-card-primary" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); color: #34d399;">
+                    <span>Live Demo</span>
+                    <span style="font-size: 14px;">↗</span>
+                  </a>
+                  <a href="https://github.com/lakibir/student-management" target="_blank" rel="noopener noreferrer"
+                    class="btn-card-secondary" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                    </svg>
+                    <span>GitHub Repo</span>
+                  </a>
+                </div>
+                <button class="btn-card-details" onclick="openProjectModal(3)">View Architecture</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 4: MERN BLOG CMS -->
+          <article class="project-card-full" data-category="cms"
+            data-title="mern blog cms modern publishing content management platform react node express mongodb"
+            data-tags="react javascript nodejs expressjs mongodb mongoose rest api jwt html5 css3 vite cloudinary" data-project-id="4">
+            <div class="project-thumb-box" onclick="openProjectModal(4)">
+              <img src="image/project-blog.jpg" alt="MERN Blog CMS" class="project-thumb-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80'">
+              <div class="project-thumb-overlay"></div>
+              <span class="thumb-tag-badge">Full-Stack / CMS</span>
+              <span class="thumb-status-badge">
+                <span class="status-dot" style="background:#10b981; box-shadow: 0 0 8px #10b981;"></span> Production Live
+              </span>
+              <button class="thumb-quick-btn" aria-label="Quick View">
+                <span>Quick View</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-card-header">
+                <h3 class="project-card-title">MERN Blog CMS — Modern Blog Publishing &amp; Content Management</h3>
+                <p class="project-card-desc">
+                  A full-stack blogging and content management platform combining a responsive React (Vite) frontend with a Node.js/Express REST API, MongoDB Mongoose ODM, and Cloudinary media pipelines.
+                </p>
+              </div>
+
+              <div class="project-metrics-row">
+                <span class="card-metric-pill">MERN Architecture</span>
+                <span class="card-metric-pill">RESTful API</span>
+                <span class="card-metric-pill">Full CMS &amp; OTP Auth</span>
+              </div>
+
+              <div class="project-features-chips" style="display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0;">
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">✍️ Blog Publishing</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">🔒 JWT &amp; Email OTP</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">☁️ Cloudinary Media</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag-pill">React</span>
+                <span class="tech-tag-pill">Node.js</span>
+                <span class="tech-tag-pill">Express.js</span>
+                <span class="tech-tag-pill">MongoDB</span>
+                <span class="tech-tag-pill">REST API</span>
+                <span class="tech-tag-pill">JWT</span>
+                <span class="tech-tag-pill">Vite</span>
+                <span class="tech-tag-pill">Cloudinary</span>
+              </div>
+
+              <div class="project-card-footer">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                  <a href="https://mern-blog-website-cms.onrender.com/" target="_blank" rel="noopener noreferrer"
+                    class="btn-card-primary" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); color: #34d399;">
+                    <span>Live Demo</span>
+                    <span style="font-size: 14px;">↗</span>
+                  </a>
+                  <a href="https://github.com/lakibir/mern_blog_website_cms" target="_blank" rel="noopener noreferrer"
+                    class="btn-card-secondary" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                    </svg>
+                    <span>GitHub Repo</span>
+                  </a>
+                </div>
+                <button class="btn-card-details" onclick="openProjectModal(4)">View Architecture</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 5: HOTEL MANAGEMENT SYSTEM -->
+          <article class="project-card-full" data-category="hospitality"
+            data-title="hotel management system operations booking reservation rooms guests react node express mysql"
+            data-tags="react nodejs express mysql postgresql rest api javascript html5 css3 hospitality booking" data-project-id="5">
+            <div class="project-thumb-box" onclick="openProjectModal(5)">
+              <img src="image/project-hotel.jpg" alt="Hotel Management System" class="project-thumb-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80'">
+              <div class="project-thumb-overlay"></div>
+              <span class="thumb-tag-badge">Full-Stack / Hospitality</span>
+              <span class="thumb-status-badge">
+                <span class="status-dot" style="background:#10b981; box-shadow: 0 0 8px #10b981;"></span> Production Ready
+              </span>
+              <button class="thumb-quick-btn" aria-label="Quick View">
+                <span>Quick View</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-card-header">
+                <h3 class="project-card-title">Hotel Management System — Operations &amp; Reservation Management</h3>
+                <p class="project-card-desc">
+                  A centralized hospitality operations platform designed to streamline room availability, guest profiles, multi-channel booking reservations, and front-desk workflows.
+                </p>
+              </div>
+
+              <div class="project-metrics-row">
+                <span class="card-metric-pill">Hospitality Management</span>
+                <span class="card-metric-pill">Booking Workflow</span>
+                <span class="card-metric-pill">Centralized Hotel Data</span>
+              </div>
+
+              <div class="project-features-chips" style="display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0;">
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">🏨 Room Operations</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">📅 Booking &amp; Check-In</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); color: #34d399; display: inline-flex; align-items: center; gap: 4px;">📊 Dashboard Reporting</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag-pill">React</span>
+                <span class="tech-tag-pill">Node.js</span>
+                <span class="tech-tag-pill">Express</span>
+                <span class="tech-tag-pill">MySQL</span>
+                <span class="tech-tag-pill">PostgreSQL</span>
+                <span class="tech-tag-pill">REST API</span>
+                <span class="tech-tag-pill">JavaScript</span>
+              </div>
+
+              <div class="project-card-footer">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                  <a href="#contact" class="btn-card-primary" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); color: #34d399;">
+                    <span>Live Demo</span>
+                    <span style="font-size: 14px;">↗</span>
+                  </a>
+                  <a href="https://github.com/lakibir/hotel-management" target="_blank" rel="noopener noreferrer"
+                    class="btn-card-secondary" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                    </svg>
+                    <span>GitHub Repo</span>
+                  </a>
+                </div>
+                <button class="btn-card-details" onclick="openProjectModal(5)">View Architecture</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 6: OBJECT DETECTION & COMPUTER VISION -->
+          <article class="project-card-full" data-category="ai"
+            data-title="object detection computer vision python opencv tensorflow deep learning bounding box neural network"
+            data-tags="python opencv tensorflow computer vision deep learning cnn numpy ai" data-project-id="6">
+            <div class="project-thumb-box" onclick="openProjectModal(6)">
+              <img src="image/project-object-detection.png" alt="Object Detection &amp; Computer Vision" class="project-thumb-img" loading="lazy">
+              <div class="project-thumb-overlay"></div>
+              <span class="thumb-tag-badge">Computer Vision / AI</span>
+              <span class="thumb-status-badge">
+                <span class="status-dot" style="background:#8b5cf6; box-shadow: 0 0 8px #8b5cf6;"></span> AI Vision Active
+              </span>
+              <button class="thumb-quick-btn" aria-label="Quick View">
+                <span>Quick View</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-card-header">
+                <h3 class="project-card-title">Object Detection &amp; Computer Vision — Real-Time Identification</h3>
+                <p class="project-card-desc">
+                  A computer vision project focused on detecting and identifying objects within images or video streams using Python, OpenCV for high-throughput video frame processing, and TensorFlow for deep neural network inference.
+                </p>
+              </div>
+
+              <div class="project-metrics-row">
+                <span class="card-metric-pill">Real-Time Streams</span>
+                <span class="card-metric-pill">Spatial Bounding Boxes</span>
+                <span class="card-metric-pill">OpenCV &amp; TensorFlow</span>
+              </div>
+
+              <div class="project-features-chips" style="display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0;">
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.3); color: #a78bfa; display: inline-flex; align-items: center; gap: 4px;">🎯 Multi-Class Detection</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.3); color: #a78bfa; display: inline-flex; align-items: center; gap: 4px;">📹 OpenCV Video Feed</span>
+                <span class="card-feature-pill" style="font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.3); color: #a78bfa; display: inline-flex; align-items: center; gap: 4px;">🧠 Deep Neural Network</span>
+              </div>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag-pill">Python</span>
+                <span class="tech-tag-pill">OpenCV</span>
+                <span class="tech-tag-pill">TensorFlow</span>
+                <span class="tech-tag-pill">Computer Vision</span>
+                <span class="tech-tag-pill">Deep Learning</span>
+                <span class="tech-tag-pill">CNN</span>
+                <span class="tech-tag-pill">NumPy</span>
+              </div>
+
+              <div class="project-card-footer">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                  <a href="#contact" class="btn-card-primary" style="background: rgba(139,92,246,0.18); border-color: rgba(139,92,246,0.4); color: #c4b5fd;">
+                    <span>Live Demo</span>
+                    <span style="font-size: 14px;">↗</span>
+                  </a>
+                  <a href="https://github.com/lakibir/object-detection" target="_blank" rel="noopener noreferrer"
+                    class="btn-card-secondary" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                    </svg>
+                    <span>GitHub Repo</span>
+                  </a>
+                </div>
+                <button class="btn-card-details" onclick="openProjectModal(6)">View Architecture</button>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- Empty State (No search results) -->
+          <div class="projects-empty-state" id="empty-search-state">
+            <div class="empty-icon">🔍</div>
+            <h3 class="empty-title">No matching projects found</h3>
+            <p class="empty-desc">We couldn't find any projects matching your search criteria. Try searching for
+              "React", "MongoDB", "Fintech", or reset the filter.</p>
+            <button class="btn-reset-filters" id="btn-reset-search">Reset Filters</button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Quick View / Case Study Modal -->
+    <div class="modal-overlay" id="project-modal" aria-hidden="true" role="dialog">
+      <div class="modal-window">
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">✕</button>
+        <div class="modal-image-wrap">
+          <img id="modal-img" src="" alt="Project Preview">
+        </div>
+        <div class="modal-body">
+          <div class="modal-header-info">
+            <span class="modal-project-category" id="modal-category">Full-Stack / MERN</span>
+            <h2 class="modal-project-title" id="modal-title">Nexus MERN Cloud Analytics</h2>
+          </div>
+          <p class="modal-desc-full" id="modal-desc"></p>
+          <div class="modal-highlights-grid" id="modal-highlights"></div>
+          <div class="modal-features-wrap" id="modal-features-container"
+            style="margin: 16px 0; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 14px 18px;">
+            <h4
+              style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-orange); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+              <span>⚡</span>
+              <span>Key Professional Features &amp; Capabilities</span>
+            </h4>
+            <div id="modal-features-list" style="display: flex; flex-direction: column; gap: 7px;"></div>
+          </div>
+          <div class="modal-tech-stack" id="modal-tech-list"></div>
+          <div class="modal-actions-row">
+            <a href="index.html#contact" id="modal-demo-btn" target="_blank" class="btn-card-primary"
+              style="display: inline-flex; align-items: center; gap: 8px;">
+              <span>Live Application Demo</span>
+              <span>↗</span>
+            </a>
+            <a href="https://github.com/lakibir" id="modal-github-btn" target="_blank" rel="noopener noreferrer"
+              class="btn-card-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z">
+                </path>
+              </svg>
+              <span>GitHub Repository</span>
+            </a>
+          </div>
+          <!-- Call to Action Banner -->
+          <section class="behind-section"
+            style="padding-top: 60px; padding-bottom: 90px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+            <div class="behind-container">
+              <div class="behind-header-grid">
+                <div class="behind-header-left">
+                  <span class="section-tag">Let's Collaborate</span>
+                  <h2 class="section-heading">Have a High-Scale<br>System in Mind?</h2>
+                </div>
+                <div class="behind-header-right">
+                  <p class="behind-statement">
+                    Whether you need end-to-end full-stack development, cloud microservices architecture, or
+                    high-performance
+                    interface design, I'm available for technical consultation and engineering roles.
+                  </p>
+                  <div class="behind-cta-group">
+                    <a href="index.html#contact" class="btn-orange-pill">
+                      <span>Start a Project</span>
+                      <div class="btn-arrow-circle-white">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                          <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer Section -->
+          <footer class="site-footer">
+            <div class="footer-container">
+              <div class="footer-main-grid">
+                <div class="footer-left">
+                  <h2 class="footer-talk-title">Let's talk</h2>
+                  <div class="footer-socials">
+                    <a href="https://github.com/lakibir" target="_blank" rel="noopener noreferrer"
+                      class="social-circle-btn" aria-label="GitHub">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z">
+                        </path>
+                      </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/lekibir-mulatu-355b94390" target="_blank" rel="noopener noreferrer"
+                      class="social-circle-btn" aria-label="LinkedIn">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                      </svg>
+                    </a>
+                    <a href="https://x.com/lakeber93727" target="_blank" rel="noopener noreferrer"
+                      class="social-circle-btn" aria-label="X (Twitter)">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                      </svg>
+                    </a>
+                    <a href="https://www.instagram.com/lekibir_21?stkn=MW9ncXJiMXYwdjRodQ==" target="_blank" rel="noopener noreferrer"
+                      class="social-circle-btn" aria-label="Instagram">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                      </svg>
+                    </a>
+                    <a href="mailto:lakbrmulatu@gmail.com" class="social-circle-btn" aria-label="Email">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                    </a>
+                    <a href="tel:+251964324525" class="social-circle-btn" aria-label="Phone">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.2 2.2z">
+                        </path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="footer-right">
+                  <p class="footer-address">
+                    Addis Ababa, Ethiopia<br>
+                    <small style="color:var(--color-text-dim);">KiOT Wollo University CS Graduate</small>
+                  </p>
+                  <p class="footer-email">lakbrmulatu@gmail.com</p>
+                  <p class="footer-phone">+251 964 324 525</p>
+                </div>
+              </div>
+
+              <div class="footer-bottom-bar">
+                <p class="copyright-text">© 2026 All right reserved by <strong>Lekibir Mulatu</strong></p>
+                <div class="footer-legal-links">
+                  <a href="/cv" target="_blank" class="btn-cv-link" data-cv-link>Resume / CV</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+
+        </div>
+
+        <!-- Interactive Project Logic -->
+        <script src="projects.js"></script>
+</body>
+
+</html>
