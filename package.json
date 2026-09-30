@@ -2,11 +2,20 @@
   "name": "portfolio-workspace",
   "version": "1.0.0",
   "description": "Lekibir Mulatu Full-Stack Portfolio Application",
+  "main": "server.js",
   "scripts": {
-    "start": "npm --prefix backend start",
+    "start": "node server.js",
     "build": "npm --prefix backend install",
+    "postinstall": "npm --prefix backend install",
     "dev": "npm --prefix backend run dev",
     "seed": "npm --prefix backend run seed"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "mongoose": "^9.10.2",
+    "multer": "^2.4.0"
   },
   "keywords": [],
   "author": "Lekibir Mulatu",
