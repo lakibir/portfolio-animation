@@ -35,9 +35,17 @@ const PORT = process.env.PORT || 5000;
 // Trust reverse proxy (essential for Render, Vercel, and Cloudflare)
 app.set('trust proxy', 1);
 
-// Sanitize MongoDB URI (strip accidental placeholder angle brackets < >)
 let rawUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/portfolio_db';
 let MONGODB_URI = rawUri.replace(/<([^>]+)>/g, '$1').trim();
+
+// Ensure standard database name (portfolio_db) and retry parameters are present if omitted
+if (MONGODB_URI.includes('.mongodb.net/?')) {
+  MONGODB_URI = MONGODB_URI.replace('.mongodb.net/?', '.mongodb.net/portfolio_db?retryWrites=true&w=majority&');
+} else if (MONGODB_URI.endsWith('.mongodb.net/')) {
+  MONGODB_URI += 'portfolio_db?retryWrites=true&w=majority';
+} else if (MONGODB_URI.endsWith('.mongodb.net')) {
+  MONGODB_URI += '/portfolio_db?retryWrites=true&w=majority';
+}
 
 // Middleware: CORS configured for local, Vercel, and custom domains
 const corsOrigin = process.env.CORS_ORIGIN || '*';
