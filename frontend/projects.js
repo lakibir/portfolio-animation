@@ -377,9 +377,9 @@
     return 'mern';
   };
 
-  const API_BASE = (typeof window !== 'undefined' && window.location && (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '5000')))
-    ? 'http://localhost:5000/api'
-    : '/api';
+  const API_BASE = typeof getPortfolioApiBase === 'function'
+    ? getPortfolioApiBase()
+    : ((typeof window !== 'undefined' && window.location && (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '5000'))) ? 'http://localhost:5000/api' : '/api');
 
   async function syncProjectsWithBackend() {
     try {

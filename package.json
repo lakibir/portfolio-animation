@@ -4,6 +4,7 @@
   "description": "Lekibir Mulatu Full-Stack Portfolio Application",
   "scripts": {
     "start": "npm --prefix backend start",
+    "build": "npm --prefix backend install",
     "dev": "npm --prefix backend run dev",
     "seed": "npm --prefix backend run seed"
   },

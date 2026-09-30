@@ -1569,10 +1569,10 @@ window.addEventListener('keydown', (e) => {
       submitBtn.innerHTML = '<span>Sending...</span>';
       statusBox.style.display = 'none';
 
-      // Dynamic API Base URL (auto-connects to localhost:5000 if opened on other ports/protocols)
-      const API_BASE = (typeof window !== 'undefined' && window.location && (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '5000')))
-        ? 'http://localhost:5000/api'
-        : '/api';
+      // Dynamic API Base URL (auto-connects via config.js or smart fallback)
+      const API_BASE = typeof getPortfolioApiBase === 'function' 
+        ? getPortfolioApiBase() 
+        : ((typeof window !== 'undefined' && window.location && (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '5000'))) ? 'http://localhost:5000/api' : '/api');
 
       try {
         const res = await fetch(`${API_BASE}/contact`, {
@@ -1608,9 +1608,9 @@ window.addEventListener('keydown', (e) => {
 
   // Instant Independent Sync for Active Resume / CV (Runs immediately with cache-busting)
   async function syncActiveCv() {
-    const API_BASE = (typeof window !== 'undefined' && window.location && (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '5000')))
-      ? 'http://localhost:5000/api'
-      : '/api';
+    const API_BASE = typeof getPortfolioApiBase === 'function'
+      ? getPortfolioApiBase()
+      : ((typeof window !== 'undefined' && window.location && (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '5000'))) ? 'http://localhost:5000/api' : '/api');
 
     try {
       const res = await fetch(`${API_BASE}/cv?_t=${Date.now()}`);
@@ -1656,9 +1656,9 @@ window.addEventListener('keydown', (e) => {
 
   // Dynamic MongoDB Backend Sync for Home Page
   async function loadHomeDynamicContent() {
-    const API_BASE = (typeof window !== 'undefined' && window.location && (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '5000')))
-      ? 'http://localhost:5000/api'
-      : '/api';
+    const API_BASE = typeof getPortfolioApiBase === 'function'
+      ? getPortfolioApiBase()
+      : ((typeof window !== 'undefined' && window.location && (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '5000'))) ? 'http://localhost:5000/api' : '/api');
 
     // 1. Sync Featured Projects Showcase into 3D Fan Deck
     try {

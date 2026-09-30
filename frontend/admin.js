@@ -4,10 +4,11 @@
  * Skills, Work Experience, Client Testimonials, Inquiries Inbox, and CV / Resume Management.
  */
 
-// Automatically connect to backend port 5000 if opened directly (file://) or via Live Server / other port
-const API_BASE = (() => {
+// Automatically resolve backend API URL (supports local, Vercel, and Render deployments)
+const API_BASE = typeof getPortfolioApiBase === 'function' ? getPortfolioApiBase() : (() => {
   if (typeof window !== 'undefined' && window.location) {
-    if (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '5000')) {
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+    if (isLocal && window.location.port && window.location.port !== '5000') {
       return 'http://localhost:5000/api';
     }
   }

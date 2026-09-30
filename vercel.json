@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "outputDirectory": "frontend",
+  "routes": [
+    {
+      "src": "/projects",
+      "dest": "/projects.html"
+    },
+    {
+      "src": "/admin",
+      "dest": "/admin.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}

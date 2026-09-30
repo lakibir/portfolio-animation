@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 const dns = require('dns');
 // Load environment variables from backend directory or current directory
 require('dotenv').config({ path: path.join(__dirname, '.env') });
@@ -31,18 +32,40 @@ const {
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust reverse proxy (essential for Render, Vercel, and Cloudflare)
+app.set('trust proxy', 1);
+
 // Sanitize MongoDB URI (strip accidental placeholder angle brackets < >)
 let rawUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/portfolio_db';
 let MONGODB_URI = rawUri.replace(/<([^>]+)>/g, '$1').trim();
 
-// Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Middleware: CORS configured for local, Vercel, and custom domains
+const corsOrigin = process.env.CORS_ORIGIN || '*';
+app.use(cors({
+  origin: corsOrigin === '*' ? '*' : corsOrigin.split(',').map(s => s.trim()),
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  credentials: true
+}));
 
-// Serve static frontend files from the frontend directory
+app.use(express.json({ limit: '15mb' }));
+app.use(express.urlencoded({ extended: true, limit: '15mb' }));
+
+// Health check endpoint for Render zero-downtime monitoring and uptime checkers
+app.get(['/health', '/api/health'], (req, res) => {
+  res.status(200).json({
+    status: 'healthy',
+    uptime: Math.floor(process.uptime()),
+    timestamp: new Date().toISOString(),
+    dbConnected: mongoose.connection.readyState === 1
+  });
+});
+
+// Serve static frontend files from the frontend directory (if co-located)
 const FRONTEND_DIR = path.join(__dirname, '..', 'frontend');
-app.use(express.static(FRONTEND_DIR));
+if (fs.existsSync(FRONTEND_DIR)) {
+  app.use(express.static(FRONTEND_DIR));
+}
 
 // Auto-seed function when MongoDB connects
 const autoSeedDatabase = async () => {
