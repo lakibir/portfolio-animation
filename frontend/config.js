@@ -10,8 +10,8 @@
  * which works automatically for local development and for Vercel when rewrites are configured.
  */
 window.PORTFOLIO_CONFIG = {
-  // Render Backend URL
-  BACKEND_URL: 'https://portfolio-animation-1.onrender.com'
+  // Active Live Render Backend URL
+  BACKEND_URL: 'https://portfolio-animation-3.onrender.com'
 };
 
 // Global helper to resolve the active Backend API URL across all pages

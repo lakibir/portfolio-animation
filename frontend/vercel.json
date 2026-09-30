@@ -5,7 +5,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "https://portfolio-animation-1.onrender.com/api/$1"
+      "dest": "https://portfolio-animation-3.onrender.com/api/$1"
     },
     {
       "src": "/projects",
