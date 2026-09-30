@@ -10,9 +10,8 @@
  * which works automatically for local development and for Vercel when rewrites are configured.
  */
 window.PORTFOLIO_CONFIG = {
-  // Render Backend URL (Example: 'https://portfolio-backend.onrender.com')
-  // Leave empty for local development or when using relative /api proxy
-  BACKEND_URL: ''
+  // Render Backend URL
+  BACKEND_URL: 'https://portfolio-animation-1.onrender.com'
 };
 
 // Global helper to resolve the active Backend API URL across all pages
